@@ -1,6 +1,6 @@
 <?php
 
-namespace Anam\Dashboard\Http\Controllers\Admin\Auth;
+namespace Anam\Dashboard\app\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;

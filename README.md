@@ -22,6 +22,43 @@ We need to add the Service Provider in `config/app.php`
 ],
 ```
 
+We have to add `admin` guard in `config/app.php`
+
+```php
+'guards' => [
+    ...
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'admins',
+    ],
+    ...
+],
+```
+
+```php
+'providers' => [
+    ...
+    'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Admin\User::class,
+    ],
+    ...
+],
+```
+
+```php
+'passwords' => [
+    ...
+    'admins' => [
+        'provider' => 'admins',
+        'table' => 'password_resets',
+        'expire' => 60,
+        'throttle' => 60,
+    ],
+    ...
+],
+```
+
 After that we need to run the command:
 
 ``php artisan vendor:publish --tag=dashboard``

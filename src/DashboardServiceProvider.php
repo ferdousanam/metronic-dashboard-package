@@ -23,7 +23,7 @@ class DashboardServiceProvider extends ServiceProvider
             __DIR__ . '/publish/Models' => app_path('Models'),
             __DIR__ . '/publish/Http/Controllers' => app_path('Http/Controllers'),
             __DIR__ . '/publish/views' => resource_path('views'),
-            __DIR__ . '/publish/routes' => 'routes',
+            __DIR__ . '/publish/routes' => base_path('routes'),
             __DIR__ . '/public/public' => public_path('/'),
             __DIR__ . '/public/assets' => public_path('vendor/dashboard/assets'),
             __DIR__ . '/public/datatables' => public_path('vendor/datatables'),
