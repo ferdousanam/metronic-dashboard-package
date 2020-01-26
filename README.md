@@ -23,12 +23,15 @@ We need to add the Service Provider in `config/app.php`
 ```
 
 After that we need to run the command:
+
 ``php artisan vendor:publish --tag=dashboard``
 
 As this package has some dependencies we need to install them via Composer.
+
 ``composer require gajus/dindent yajra/laravel-datatables``
 
 Everything is done!
 
 We have used `yajra/laravel-datatables`so that we can publish the vendor of the datatables and customize the datatables.
+
 ``php artisan vendor:publish --tag=datatables``
