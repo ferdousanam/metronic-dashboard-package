@@ -22,7 +22,7 @@ We need to add the Service Provider in `config/app.php`
 ],
 ```
 
-We have to add `admin` guard in `config/app.php`
+We have to add `admin` guard in `config/auth.php`
 
 ```php
 'guards' => [
