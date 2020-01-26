@@ -1,6 +1,6 @@
 <?php
 
-namespace Anam\Dashboard\Http\Middleware;
+namespace Anam\Dashboard\app\Http\Middleware;
 
 use Closure;
 

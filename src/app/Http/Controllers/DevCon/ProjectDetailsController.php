@@ -1,6 +1,6 @@
 <?php
 
-namespace Anam\Dashboard\Http\Controllers\DevCon;
+namespace Anam\Dashboard\app\Http\Controllers\DevCon;
 
 use Anam\Dashboard\Models\Project;
 use App\Http\Controllers\Controller;

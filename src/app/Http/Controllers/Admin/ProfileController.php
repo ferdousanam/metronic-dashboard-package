@@ -1,6 +1,6 @@
 <?php
 
-namespace Anam\Dashboard\Http\Controllers\Admin;
+namespace Anam\Dashboard\app\Http\Controllers\Admin;
 
 use App\Models\Admin\Profile;
 use App\Models\Admin\User;

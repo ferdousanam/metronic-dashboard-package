@@ -1,22 +1,22 @@
 <?php
 
-namespace Anam\Dashboard\Http\Controllers\Admin;
+namespace Anam\Dashboard\app\Http\Controllers\DevCon;
 
-use Anam\Dashboard\DataTables\UserTypesDataTable;
+use Anam\Dashboard\app\DataTables\DevTables\MenusDataTable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\AdminModel\Priority;
+use Anam\Dashboard\Models\Menu;
 
-class UserTypesController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(UserTypesDataTable $user_types)
+    public function index(MenusDataTable $menu)
     {
-        return $user_types->render('dashboard::userTypes.index-dt');
+        return $menu->render('dashboard::devMenu.index');
     }
 
     /**
@@ -26,7 +26,7 @@ class UserTypesController extends Controller
      */
     public function create()
     {
-        return view('dashboard::userTypes.create');
+        return view('dashboard::devMenu.create');
     }
 
     /**
@@ -38,13 +38,17 @@ class UserTypesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'priority_name' => 'required',
-            'priority_status' => 'required',
+            'serial_no' => 'required',
+            'menu_name' => 'required',
+            'selector' => 'required',
+            'route_name' => 'required',
+            'status' => 'required',
         ]);
         $data = $request->all();
-        $insert = Priority::create($data);
+        $data['parent_id'] = 0;
+        $insert = Menu::create($data);
         if ($insert) {
-            session()->flash('success', 'User Type Created Successfully');
+            session()->flash('success', 'Menu Created Successfully');
         } else {
             session()->flash('error', 'Something Went Wrong!');
         }
@@ -70,8 +74,8 @@ class UserTypesController extends Controller
      */
     public function edit($id)
     {
-        $user_type = Priority::find($id);
-        return view('dashboard::userTypes.edit', compact('user_type'));
+        $main_menu = Menu::find($id);
+        return view('dashboard::devMenu.edit', compact('main_menu'));
     }
 
     /**
@@ -84,15 +88,19 @@ class UserTypesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'priority_name' => 'required',
-            'priority_status' => 'required',
+            'serial_no' => 'required',
+            'menu_name' => 'required',
+            'selector' => 'required',
+            'route_name' => 'required',
+            'status' => 'required',
         ]);
         $data = $request->all();
+        $data['parent_id'] = 0;
 
-        $priority = Priority::find($id);
-        $update = $priority->update($data);
+        $menu = Menu::find($id);
+        $update = $menu->update($data);
         if ($update) {
-            session()->flash('success', 'User Type Updated Successfully');
+            session()->flash('success', 'Menu Updated Successfully');
         } else {
             session()->flash('error', 'Something Went Wrong!');
         }
@@ -107,8 +115,8 @@ class UserTypesController extends Controller
      */
     public function destroy($id)
     {
-        $delete = Priority::find($id)->delete();
-        if ($delete) {
+        $branch = Menu::find($id)->delete();
+        if ($branch) {
             return response()->json(["success" => true]);
         } else {
             return response()->json(["success" => false]);

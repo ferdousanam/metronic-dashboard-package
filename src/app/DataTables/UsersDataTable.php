@@ -1,29 +1,34 @@
 <?php
 
-namespace Anam\Dashboard\DataTables;
+namespace Anam\Dashboard\app\DataTables;
 
-use Anam\Dashboard\Models\Priority as UserType;
+use App\Models\Admin\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class UserTypesDataTable extends DataTable
-{
+class UsersDataTable extends DataTable {
     /**
      * Build DataTable class.
      *
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query)
-    {
+    public function dataTable($query) {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'dashboard::userTypes.action')
-            ->addColumn('priority_status', function ($type) {
-                if ($type->priority_status == 1) {
+            ->addColumn('action', 'dashboard::users.action')
+            ->addColumn('photo', function ($user) {
+                $img = '';
+                if ($user->profile_image) {
+                    $img = '<img class="img-responsive" src="' . asset("uploads/profile-image/" . $user->profile_image) . '" alt="Profile Image" style="max-height: 50px;">';
+                }
+                return $img;
+            })
+            ->addColumn('status', function ($user) {
+                if ($user->status == 1) {
                     $status = '<span class="kt-badge kt-badge--success kt-badge--inline kt-badge--pill">Active</span>';
                 } else {
                     $status = '<span class="kt-badge kt-badge--warning kt-badge--inline kt-badge--pill">Inactive</span>';
@@ -36,11 +41,10 @@ class UserTypesDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\UserType $model
+     * @param \App\Models\Admin\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(UserType $model)
-    {
+    public function query(User $model) {
         return $model->newQuery();
     }
 
@@ -49,8 +53,7 @@ class UserTypesDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html()
-    {
+    public function html() {
         $search = "Search: "; // We can also use variables; This is for instruction purpose only
         $page_length = 10; // We can make it dynamic dependent on User
         $row_text = " Rows";
@@ -58,7 +61,7 @@ class UserTypesDataTable extends DataTable
         $builder = $this->builder();
 
         return $builder
-            ->setTableId('user-types-table')
+            ->setTableId('users-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom("fltr<'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>")
@@ -96,7 +99,7 @@ class UserTypesDataTable extends DataTable
                     });
                 }",
                 'preDrawCallback' => "function(){
-                    $('#user-types-table_processing').remove();
+                    $('#users-table_processing').remove();
                 }",
             ));
     }
@@ -106,12 +109,12 @@ class UserTypesDataTable extends DataTable
      *
      * @return array
      */
-    protected function getColumns()
-    {
+    protected function getColumns() {
         return [
-            Column::make('priority_name')->title('User Type')->footer('User Type'),
-            Column::make('priority_description')->title('Type Description')->footer('Type Description'),
-            Column::make('priority_status')->title('Status')->footer('Status')->addClass('text-center'),
+            Column::make('name')->footer('Full Name'),
+            Column::make('email')->footer('Email'),
+            Column::make('photo')->footer('Photo')->searchable(false)->orderable(false)->addClass('text-center'),
+            Column::make('status')->footer('Status')->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -126,8 +129,7 @@ class UserTypesDataTable extends DataTable
      *
      * @return string
      */
-    protected function filename()
-    {
-        return 'UserTypes_' . date('YmdHis');
+    protected function filename() {
+        return 'Users_' . date('YmdHis');
     }
 }

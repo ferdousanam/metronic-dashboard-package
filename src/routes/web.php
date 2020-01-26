@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Anam\Dashboard\Http\Controllers\Admin', 'middleware' => ['web']], function () {
+Route::group(['namespace' => 'Anam\Dashboard\app\Http\Controllers\Admin', 'middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['auth:admin']], function () {
         // Super User Routes

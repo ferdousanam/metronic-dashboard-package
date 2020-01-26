@@ -1,6 +1,6 @@
 <?php
 
-namespace Anam\Dashboard\Http\Controllers\DevCon;
+namespace Anam\Dashboard\app\Http\Controllers\DevCon;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

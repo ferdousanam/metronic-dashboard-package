@@ -1,8 +1,8 @@
 <?php
 
-namespace Anam\Dashboard\Http\Controllers\Admin;
+namespace Anam\Dashboard\app\Http\Controllers\Admin;
 
-use Anam\Dashboard\DataTables\UsersDataTable;
+use Anam\Dashboard\app\DataTables\UsersDataTable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Anam\Dashboard\Models\Priority;

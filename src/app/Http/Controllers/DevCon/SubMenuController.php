@@ -1,8 +1,8 @@
 <?php
 
-namespace Anam\Dashboard\Http\Controllers\DevCon;
+namespace Anam\Dashboard\app\Http\Controllers\DevCon;
 
-use Anam\Dashboard\DataTables\DevTables\SubMenusDataTable;
+use Anam\Dashboard\app\DataTables\DevTables\SubMenusDataTable;
 use Anam\Dashboard\Models\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

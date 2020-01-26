@@ -13,7 +13,7 @@
 */
 
 // Developer Routes
-Route::group(['namespace' => 'Anam\Dashboard\Http\Controllers\DevCon', 'middleware' => ['web', 'auth:admin', 'CheckSuperUser']], function () {
+Route::group(['namespace' => 'Anam\Dashboard\app\Http\Controllers\DevCon', 'middleware' => ['web', 'auth:admin', 'CheckSuperUser']], function () {
     Route::get('dev-mode/{switch}', 'DevOptionController@devOptions')->name('dev-mode');
     Route::resource('project-details', 'ProjectDetailsController');
     Route::resource('main-menu', 'MenuController');

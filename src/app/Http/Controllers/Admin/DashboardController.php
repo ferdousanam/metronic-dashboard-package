@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Anam\Dashboard\Http\Controllers\Admin;
+namespace Anam\Dashboard\app\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
