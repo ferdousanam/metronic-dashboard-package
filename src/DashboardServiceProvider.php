@@ -15,6 +15,8 @@ class DashboardServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         $this->loadRoutesFrom(__DIR__ . '/routes/dev.php');
         $this->loadViewsFrom(__DIR__ . '/views', 'dashboard');
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+
         $this->publishes([
             __DIR__ . '/publish/Models' => app_path('Models'),
             __DIR__ . '/publish/Http/Controllers' => app_path('Http/Controllers'),
