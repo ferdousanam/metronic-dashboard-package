@@ -1,0 +1,29 @@
+{
+    "name": "ferdousanam/dashboard",
+    "description": "This package will create dashboard for project with Metronic Dashboard Template",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ferdous Anam",
+            "email": "ferdous.anam@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "gajus/dindent": "^2.0",
+        "yajra/laravel-datatables": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anam\\Dashboard\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Anam\\Dashboard\\DashboardServiceProvider"
+            ]
+        }
+    }
+}
