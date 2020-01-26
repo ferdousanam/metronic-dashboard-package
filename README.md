@@ -59,13 +59,19 @@ We have to add `admin` guard in `config/auth.php`
 ],
 ```
 
-After that we need to run the command:
+After that we need to run these command:
+
+``composer dump-autoload``
 
 ``php artisan vendor:publish --tag=dashboard``
 
 As this package has some dependencies we need to install them via Composer.
 
 ``composer require gajus/dindent yajra/laravel-datatables``
+
+We need to migrate and run Seeder now.
+
+``php artisan migrate --seed``
 
 Everything is done!
 
