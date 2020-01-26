@@ -14,13 +14,13 @@ class AddNewColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('profile_image')->after('email');
-            $table->string('last_failed_login_ip')->after('remember_token');
-            $table->string('last_failed_login_at')->after('remember_token');
-            $table->string('last_login_ip')->after('remember_token');
-            $table->string('last_login_at')->after('remember_token');
-            $table->string('status')->after('remember_token');
-            $table->string('user_level')->after('remember_token');
+            $table->string('profile_image')->nullable()->after('email');
+            $table->string('last_failed_login_ip')->nullable()->after('remember_token');
+            $table->dateTime('last_failed_login_at')->nullable()->after('remember_token');
+            $table->string('last_login_ip')->nullable()->after('remember_token');
+            $table->dateTime('last_login_at')->nullable()->after('remember_token');
+            $table->integer('status')->after('remember_token');
+            $table->integer('user_level')->after('remember_token');
         });
     }
 
