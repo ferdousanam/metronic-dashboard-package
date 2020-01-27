@@ -23,7 +23,7 @@ class SeedServiceProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            if ($this->isConsoleCommandContains([ 'db:seed', '--seed' ], [ '--class', 'help', '-h' ])) {
+            if ($this->isConsoleCommandContains([ 'seed:dash', 'dash:seed' ], [ '--class', 'help', '-h' ])) {
                 $this->addSeedsAfterConsoleCommandFinished();
             }
         }

@@ -73,6 +73,8 @@ We need to migrate and run Seeder now.
 
 ``php artisan migrate --seed``
 
+``php artisan seed:dash``
+
 Everything is done!
 
 We have used `yajra/laravel-datatables`so that we can publish the vendor of the datatables and customize the datatables.

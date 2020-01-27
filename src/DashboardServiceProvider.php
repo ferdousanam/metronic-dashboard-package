@@ -28,6 +28,11 @@ class DashboardServiceProvider extends ServiceProvider
             __DIR__ . '/public/assets' => public_path('vendor/dashboard/assets'),
             __DIR__ . '/public/datatables' => public_path('vendor/datatables'),
         ], 'dashboard');
+
+        $this->commands([
+            \Anam\Dashboard\app\Console\Commands\DashboardSeederCommand::class,
+        ]);
+
         $this->registerHelpers();
         $router->aliasMiddleware('CheckSuperUser', \Anam\Dashboard\app\Http\Middleware\CheckSuperUser::class);
         $router->aliasMiddleware('checkPermission', \Anam\Dashboard\app\Http\Middleware\checkPermission::class);
