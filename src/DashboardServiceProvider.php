@@ -35,7 +35,7 @@ class DashboardServiceProvider extends ServiceProvider
 
         $this->registerHelpers();
         $router->aliasMiddleware('CheckSuperUser', \Anam\Dashboard\app\Http\Middleware\CheckSuperUser::class);
-        $router->aliasMiddleware('checkPermission', \Anam\Dashboard\app\Http\Middleware\checkPermission::class);
+        $router->aliasMiddleware('checkPermission', \Anam\Dashboard\app\Http\Middleware\CheckPermission::class);
     }
 
     public function register()
