@@ -5,7 +5,7 @@ namespace Anam\Dashboard\app\Http\Controllers\Admin;
 use Anam\Dashboard\app\DataTables\UserTypesDataTable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\AdminModel\Priority;
+use Anam\Dashboard\Models\Priority;
 
 class UserTypesController extends Controller
 {

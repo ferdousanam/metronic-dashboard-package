@@ -6,7 +6,7 @@ use App\Models\Admin\Profile;
 use App\Models\Admin\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\AdminModel\Priority;
+use Anam\Dashboard\Models\Priority;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 

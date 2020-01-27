@@ -15,7 +15,7 @@ class CreateDevModeSetupTable extends Migration
     {
         Schema::create('dev_mode_setup', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('developer_mode')->default(1);
+            $table->integer('developer_mode')->default(1)->comment('1 = On & 0 = off');
             $table->integer('attendance_type')->default(1);
             $table->integer('developer')->default(100);
             $table->timestamps();

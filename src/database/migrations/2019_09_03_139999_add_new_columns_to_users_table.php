@@ -19,7 +19,7 @@ class AddNewColumnsToUsersTable extends Migration
             $table->dateTime('last_failed_login_at')->nullable()->after('remember_token');
             $table->string('last_login_ip')->nullable()->after('remember_token');
             $table->dateTime('last_login_at')->nullable()->after('remember_token');
-            $table->integer('status')->after('remember_token');
+            $table->integer('status')->after('remember_token')->comment('1 = Active & 0 = Inactive');
             $table->integer('user_level')->after('remember_token');
         });
     }
