@@ -96,8 +96,9 @@ class SeedServiceProvider extends ServiceProvider
         $namespaceLines = preg_grep('/^namespace /', $lines);
         if (is_array($namespaceLines)) {
             $namespaceLine = array_shift($namespaceLines);
+            $namespaceLine = explode(';', $namespaceLine)[0]; // Remove the ';' first
             $match = array();
-            preg_match('/^namespace (.*);$/', $namespaceLine, $match);
+            preg_match('/^namespace (.*)$/', $namespaceLine, $match);
             $namespace = array_pop($match);
         }
 
