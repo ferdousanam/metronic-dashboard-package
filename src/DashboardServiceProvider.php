@@ -2,6 +2,7 @@
 
 namespace Anam\Dashboard;
 
+use Anam\Dashboard\Providers\EventServiceProvider;
 use Anam\Dashboard\Providers\RouteServiceProvider;
 use Anam\Dashboard\Providers\SeedServiceProvider;
 use Illuminate\Routing\Router;
@@ -12,6 +13,7 @@ class DashboardServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->register(EventServiceProvider::class);
         $this->app->register(SeedServiceProvider::class);
         $this->app->register(DashboardServiceProvider::class);
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
