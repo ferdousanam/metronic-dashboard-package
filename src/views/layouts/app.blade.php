@@ -29,7 +29,7 @@
   <!--begin::Layout Skins(used by all pages) -->
 
   <!--end::Layout Skins -->
-{{--  <link rel="shortcut icon" href="{{asset('uploads/project-info/') . '/' . project()->app_icon}}"/>--}}
+  <link rel="shortcut icon" href="{{asset('uploads/project-info/') . '/' . project()->app_icon}}"/>
 
 @stack('css')
 

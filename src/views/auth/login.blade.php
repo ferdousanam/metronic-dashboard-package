@@ -25,7 +25,7 @@
   <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"/>
 
   <!--end::Layout Skins -->
-  <link rel="shortcut icon" href="{{asset('vendor/dashboard/assets/media/logos/favicon.ico')}}"/>
+  <link rel="shortcut icon" href="{{asset('uploads/project-info/') . '/' . project()->app_icon}}"/>
 
 @stack('css')
 
