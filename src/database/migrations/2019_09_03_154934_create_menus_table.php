@@ -20,7 +20,7 @@ class CreateMenusTable extends Migration
             $table->integer('serial_no');
             $table->string('menu_name');
             $table->string('route_name');
-            $table->string('icon');
+            $table->string('icon')->nullable();
             $table->integer('status')->comment('1 = Active & 0 = Inactive');
             $table->timestamps();
         });

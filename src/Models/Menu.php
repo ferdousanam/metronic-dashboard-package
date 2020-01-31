@@ -16,6 +16,6 @@ class Menu extends Model {
     );
 
     public function parent() {
-        return $this->belongsTo('App\AdminModel\Menu');
+        return $this->belongsTo('Anam\Dashboard\Models\Menu');
     }
 }

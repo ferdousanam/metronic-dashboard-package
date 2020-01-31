@@ -147,7 +147,7 @@ class ProfileController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email, '. auth()->user()->id . ',id',
         ]);
         $user_id = Auth::user()->id;
         $user_data = array(
