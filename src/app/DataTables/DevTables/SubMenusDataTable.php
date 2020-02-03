@@ -119,7 +119,7 @@ class SubMenusDataTable extends DataTable {
     protected function getColumns() {
         return [
             Column::make('serial_no')->footer('Serial No'),
-            Column::make('parent_name')->title('Main Menu Title')->footer('Main Menu Title'),
+            Column::make('parent_name', 'parent.menu_name')->title('Main Menu Title')->footer('Main Menu Title'),
             Column::make('menu_name')->title('Sub Menu Title')->footer('Sub Menu Title'),
             Column::make('route_name')->title('Route URL')->footer('Route URL'),
             Column::make('icon', 'icon')->title('Icon')->footer('Icon')->searchable(false)->orderable(false)->addClass('text-center'),

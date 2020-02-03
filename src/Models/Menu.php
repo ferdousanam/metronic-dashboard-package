@@ -15,6 +15,15 @@ class Menu extends Model {
         'status',
     );
 
+    /**
+     * Get the Parent Name
+     *
+     * @return mixed
+     */
+    public function getParentNameAttribute() {
+        return $this->attributes['parent_name'] = $this->parent->menu_name;
+    }
+
     public function parent() {
         return $this->belongsTo('Anam\Dashboard\Models\Menu');
     }
