@@ -7,7 +7,7 @@
 </li>
 <li id="main-menus-mm" class="kt-menu__item" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
   <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon la la-git"></i><span class="kt-menu__link-text">Main Menus</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-  <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+  <div class="kt-menu__submenu"><span class="kt-menu__arrow"></span>
     <ul class="kt-menu__subnav">
       <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
         <span class="kt-menu__link"><span class="kt-menu__link-text">Main Menus</span></span>
@@ -36,4 +36,7 @@
       </li>
     </ul>
   </div>
+</li>
+<li id="menu-visibility-mm" class="kt-menu__item" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+  <a href="{{ route('menu-visibility.index') }}" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-cog"></i><span class="kt-menu__link-text">Menu Visibility</span></a>
 </li>
