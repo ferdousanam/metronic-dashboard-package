@@ -21,6 +21,7 @@ class CreateMenusTable extends Migration
             $table->string('menu_name');
             $table->string('route_name');
             $table->string('icon')->nullable();
+            $table->integer('sidebar_visibility')->default(1)->comment('1 = On & 0 = Off');
             $table->integer('status')->comment('1 = Active & 0 = Inactive');
             $table->timestamps();
         });
