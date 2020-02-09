@@ -31,7 +31,9 @@
 
   <!--end::Layout Skins -->
   <link rel="shortcut icon" href="{{asset('uploads/project-info/') . '/' . project()->app_icon}}"/>
-
+  <script>
+    window.base_url = '{{ url("/") }}';
+  </script>
 @stack('css')
 
 <!-- Custom Theme Style -->
