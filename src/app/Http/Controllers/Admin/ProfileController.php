@@ -35,8 +35,9 @@ class ProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
@@ -81,9 +82,11 @@ class ProfileController extends Controller
         if ($upload) {
             $user_id = Auth::user()->id;
             $user = User::find($user_id);
-            $oldAvatarPath = public_path() . '/uploads/profile-image/' . $user->profile_image;
-            if (file_exists($oldAvatarPath)) {
-                unlink($oldAvatarPath);
+            if ($user->profile_image) {
+                $oldAvatarPath = public_path() . '/uploads/profile-image/' . $user->profile_image;
+                if (file_exists($oldAvatarPath)) {
+                    unlink($oldAvatarPath);
+                }
             }
             $update = $user->update(array('profile_image' => $getImageName));
             if ($update) {
@@ -138,9 +141,10 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, $id)
     {
