@@ -29,7 +29,9 @@
         <div class="form-group row">
           <label for="menu_name" class="col-2 col-form-label">Menu Title *</label>
           <div class="col-10">
-            <input class="form-control" type="text" id="menu_name" name="menu_name" value="{{ old('menu_name') }}" placeholder="Menu Title" required>
+            <input class="form-control" type="text" id="menu_name" name="menu_name" value="{{ old('menu_name') }}"
+                   oninput="javascript: document.getElementById('selector').value = document.getElementById('route_name').value = this.value.toLowerCase().replace(' ', '-');"
+                   placeholder="Menu Title" required>
           </div>
         </div>
         <div class="form-group row">
