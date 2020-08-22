@@ -59,24 +59,30 @@ We have to add `admin` guard in `config/auth.php`
 ],
 ```
 
-After that we need to run these command:
-
-``composer dump-autoload``
-
-``php artisan vendor:publish --tag=dashboard``
-
-As this package has some dependencies we need to install them via Composer.
-
-``composer require gajus/dindent yajra/laravel-datatables``
-
-We need to migrate and run Seeder now.
-
-``php artisan migrate --seed``
-
-``php artisan seed:dash``
-
-Everything is done!
-
+- After that we need to run these command:
+    ```bash
+    composer dump-autoload
+    ```
+    ```bash
+    php artisan vendor:publish --tag=dashboard
+    ```
+- As this package has some dependencies we need to install them via Composer.
+    ```bash
+    composer require gajus/dindent yajra/laravel-datatables
+    ```
+- Make sure you have installed the `laravel/ui` package. You can install it by running the command below.
+    ```bash
+    composer require laravel/ui
+    ```
+- We need to migrate and run Seeder now.
+    ```bash
+    php artisan migrate --seed
+    ```
+    ```bash
+    php artisan seed:dash
+    ```
+## Everything is complete!
 We have used `yajra/laravel-datatables`so that we can publish the vendor of the datatables and customize the datatables.
-
-``php artisan vendor:publish --tag=datatables``
+```bash
+php artisan vendor:publish --tag=datatables
+```
