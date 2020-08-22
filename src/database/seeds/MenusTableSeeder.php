@@ -24,7 +24,7 @@ class MenusTableSeeder extends Seeder
                 'parent_id' => 0,
                 'serial_no' => $key+1,
                 'menu_name' => $main_menu,
-	        	'route_name' => strtolower($main_menu),
+	        	'route_name' => ($main_menu == 'Services') ? '#' : strtolower($main_menu),
 	        	'icon' => 'fa fa-home',
 	        	'status' => 1,
 	        ]);
@@ -36,7 +36,7 @@ class MenusTableSeeder extends Seeder
 	        	'parent_id' => 2,
 	        	'serial_no' => $i,
 	        	'menu_name' => 'Services ' . $i,
-	        	'route_name' => 'services-' . $i,
+	        	'route_name' => ($i == 1) ? '#' : 'services-' . $i,
 	        	'icon' => 'fa fa-hand-o-right',
 	        	'status' => 1,
 	        ]);
