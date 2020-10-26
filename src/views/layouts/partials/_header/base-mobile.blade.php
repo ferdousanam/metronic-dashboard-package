@@ -3,7 +3,7 @@
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 	<div class="kt-header-mobile__logo">
 		<a href="{{ route('dashboard.index') }}">
-			<img alt="Logo" src="{{asset('vendor/dashboard/assets/media/logos/logo-12.png')}}" />
+			<img alt="Logo" src="{{brandLogo()}}" />
 		</a>
 	</div>
 	<div class="kt-header-mobile__toolbar">
