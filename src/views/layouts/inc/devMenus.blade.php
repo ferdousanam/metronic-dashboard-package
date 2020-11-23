@@ -3,7 +3,7 @@
   <i class="kt-menu__section-icon flaticon-more-v2"></i>
 </li>
 <li id="project-details-mm" class="kt-menu__item" aria-haspopup="true">
-  <a href="project-details" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-cog"></i><span class="kt-menu__link-text">Project Details</span></a>
+  <a href="{{ route('project-details.index') }}" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-cog"></i><span class="kt-menu__link-text">Project Details</span></a>
 </li>
 <li id="main-menus-mm" class="kt-menu__item" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
   <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon la la-git"></i><span class="kt-menu__link-text">Main Menus</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>

@@ -39,13 +39,13 @@ function generate_multilevel_menus($parent_id = 0)
                 } else {
                     if ($menu->parent_id == 0) {
                         $html .= '<li id="' . $menu->selector . '-mm" class="kt-menu__item " aria-haspopup="true">';
-                        $html .= '<a href="' . url($menu->route_name) . '" class="kt-menu__link ">';
+                        $html .= '<a href="' . url(routePrefix($menu->route_name)) . '" class="kt-menu__link ">';
                         if ($menu->icon) {
                             $html .= '<i class="kt-menu__link-icon ' . $menu->icon . '"></i>';
                         }
                     } else {
                         $html .= '<li id="' . $menu->selector . '-sm" class="kt-menu__item " aria-haspopup="true">';
-                        $html .= '<a href="' . url($menu->route_name) . '" class="kt-menu__link ">';
+                        $html .= '<a href="' . url(routePrefix($menu->route_name)) . '" class="kt-menu__link ">';
                         $html .= '<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>';
                     }
                     $html .= '<span class="kt-menu__link-text">';

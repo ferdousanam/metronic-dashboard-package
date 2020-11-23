@@ -36,6 +36,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $this->redirectTo = routePrefix('/dashboard');
         $this->middleware('guest:admin')->except('logout');
     }
 
@@ -51,7 +52,7 @@ class LoginController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function logout(Request $request)
     {

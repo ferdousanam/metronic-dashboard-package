@@ -1,6 +1,9 @@
 <?php
 
-Route::group(['namespace' => 'Anam\Dashboard\app\Http\Controllers\Admin', 'middleware' => ['web']], function () {
+Route::group([
+    'namespace' => 'Anam\Dashboard\app\Http\Controllers\Admin',
+    'middleware' => ['web'],
+    'prefix' => config('dashboard.route_prefix', '/')], function () {
 
     Route::group(['middleware' => ['auth:admin']], function () {
         // Super User Routes
@@ -9,6 +12,11 @@ Route::group(['namespace' => 'Anam\Dashboard\app\Http\Controllers\Admin', 'middl
             Route::resource('user', 'UsersController');
             Route::resource('user-type', 'UserTypesController');
             Route::resource('user-priority-level', 'UserPriorityLevelController');
+        });
+
+        // User Routes with different permission
+        Route::group(['middleware' => ['checkPermission']], function () {
+            Route::resource('dashboard', 'DashboardController');
         });
 
         // User Routes only auth permission
@@ -22,15 +30,9 @@ Route::group(['namespace' => 'Anam\Dashboard\app\Http\Controllers\Admin', 'middl
             // Profile Routes
             Route::resource('profile', 'ProfileController');
         });
-
-        // User Routes with different permission
-        Route::group(['middleware' => ['checkPermission']], function () {
-            Route::resource('dashboard', 'DashboardController');
-        });
-
     });
 
-    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::group(['as' => 'admin.'], function () {
         // Admin Authentication Routes...
         Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
         Route::post('login', 'Auth\LoginController@login');
