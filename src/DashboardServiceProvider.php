@@ -32,6 +32,26 @@ class DashboardServiceProvider extends ServiceProvider
             __DIR__ . '/public/datatables' => public_path('vendor/datatables'),
         ], 'dashboard');
 
+        $this->publishes([
+            __DIR__ . '/publish/config' => config_path('/'),
+        ], 'dashboard:config');
+
+        $this->publishes([
+            __DIR__ . '/publish/Http/Controllers' => app_path('Http/Controllers'),
+            __DIR__ . '/publish/views' => resource_path('views'),
+            __DIR__ . '/publish/routes' => base_path('routes'),
+        ], 'dashboard:starter');
+
+        $this->publishes([
+            __DIR__ . '/publish/Models' => app_path('Models'),
+        ], 'dashboard:models');
+
+        $this->publishes([
+            __DIR__ . '/public/public' => public_path('/'),
+            __DIR__ . '/public/assets' => public_path('vendor/dashboard/assets'),
+            __DIR__ . '/public/datatables' => public_path('vendor/datatables'),
+        ], 'dashboard:assets');
+
         $this->commands([
             \Anam\Dashboard\app\Console\Commands\DashboardSeederCommand::class,
         ]);
