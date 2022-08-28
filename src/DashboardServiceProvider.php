@@ -63,7 +63,7 @@ class DashboardServiceProvider extends ServiceProvider
 
     public function register()
     {
-
+        $this->mergeConfigFrom(__DIR__ . '/publish/config/dashboard.php', 'dashboard');
     }
 
     /**
