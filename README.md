@@ -5,14 +5,22 @@ This package is currently on development and It is now an offline package. To us
 
 Now we need to make changes in our `composer.json`	
 ```json
-"autoload-dev": {
-    "psr-4": {
-        "Tests\\": "tests/",
-        "Anam\\Dashboard\\": "packages/dashboard/src/"
-    }
-},
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:ferdousanam/metronic-dashboard-package.git"
+        }
+    ]
+}
 ```
-We need to add the Service Provider in `config/app.php`
+
+### Install via composer
+```bash
+composer require ferdousanam/dashboard
+```
+
+We need to add the Service Provider in `config/app.php` for laravel `version < 6`
 
 ```php
 'providers' => [
@@ -65,6 +73,19 @@ We have to add `admin` guard in `config/auth.php`
     ```
     ```bash
     php artisan vendor:publish --tag=dashboard
+    ```
+  Or, Using Flags:
+    ```bash
+    php artisan vendor:publish --tag=dashboard:config
+    ```
+    ```bash
+    php artisan vendor:publish --tag=dashboard:starter
+    ```
+    ```bash
+    php artisan vendor:publish --tag=dashboard:models
+    ```
+    ```bash
+    php artisan vendor:publish --tag=dashboard:assets
     ```
 - As this package has some dependencies we need to install them via Composer.
     ```bash
