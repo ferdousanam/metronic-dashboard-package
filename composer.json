@@ -11,6 +11,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "arcanedev/log-viewer": "^8.3",
         "gajus/dindent": "^2.0",
         "yajra/laravel-datatables": "^1.5"
     },
@@ -37,6 +38,9 @@
         }
     },
     "config": {
+        "platform": {
+            "php": "7.3"
+        },
         "sort-packages": true
     }
 }

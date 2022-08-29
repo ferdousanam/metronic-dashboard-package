@@ -36,7 +36,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->redirectTo = routePrefix('/dashboard');
+        if ($redirectTo = config('dashboard.redirect_after_login')) {
+            $this->redirectTo = $redirectTo;
+        }
         $this->middleware('guest:admin')->except('logout');
     }
 

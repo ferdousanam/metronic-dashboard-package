@@ -24,3 +24,6 @@
 <li id="menu-visibility-mm" class="kt-menu__item" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
   <a href="{{ route('menu-visibility.index') }}" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-cog"></i><span class="kt-menu__link-text">Menu Visibility</span></a>
 </li>
+<li id="menu-visibility-mm" class="kt-menu__item" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+  <a href="{{ route('log-viewer::dashboard') }}" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-fw fa-book"></i><span class="kt-menu__link-text">Log Viewer</span></a>
+</li>

@@ -18,7 +18,9 @@ Route::group([
 
         // User Routes with different permission
         Route::group(['middleware' => ['checkPermission'], 'as' => 'admin.'], function () {
-            Route::resource('dashboard', 'DashboardController');
+            if (!config('dashboard.redirect_after_login')) {
+                Route::resource('dashboard', 'DashboardController');
+            }
         });
 
         // User Routes only auth permission

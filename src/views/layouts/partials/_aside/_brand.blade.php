@@ -1,7 +1,7 @@
 <!-- begin:: Aside -->
 <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
   <div class="kt-aside__brand-logo">
-    <a href="{{ route('admin.dashboard.index') }}">
+    <a href="{{ config('dashboard.redirect_after_login') ? url(config('dashboard.redirect_after_login')) : route('admin.dashboard.index') }}">
       <img alt="Brand" src="{{brandLogo()}}">
     </a>
   </div>
