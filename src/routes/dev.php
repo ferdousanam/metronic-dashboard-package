@@ -23,6 +23,5 @@ Route::group([
     Route::get('dev-mode/{switch}', 'DevOptionController@devOptions')->name('dev-mode');
     Route::resource('project-details', 'ProjectDetailsController');
     Route::resource('menu-visibility', 'MenuVisibilityController');
-    Route::resource('main-menu', 'MenuController');
-    Route::resource('sub-menu', 'SubMenuController');
+    Route::resource('menu', 'MenuController');
 });

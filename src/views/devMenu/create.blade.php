@@ -1,6 +1,6 @@
 @extends('dashboard::layouts.app')
 
-@section('page_title', 'Create Main Menu')
+@section('page_title', 'Create Menu')
 @section('page_tagline', '')
 
 @section('content')
@@ -16,7 +16,7 @@
     </div>
 
     <!--begin::Form-->
-    <form id="menu-form" action="{{ route('main-menu.store') }}" method="POST" class="kt-form kt-form--label-right">
+    <form id="menu-form" action="{{ route('menu.store') }}" method="POST" class="kt-form kt-form--label-right">
       <div class="kt-portlet__body">
         @csrf
 
@@ -27,11 +27,30 @@
           </div>
         </div>
         <div class="form-group row">
+          <label for="menu_id" class="col-2 col-form-label">Parent Menu *</label>
+          <div class="col-10">
+            <select name="menu_id" id="menu_id" class="form-control chosen" required>
+                <option value="">Select Parent Menu</option>
+              @if(isset($main_menus) && count($main_menus)>0)
+                @foreach ($main_menus as $main_menu)
+                  <option value="{{$main_menu->id}}">{{$main_menu->menu_name}}</option>
+                @endforeach
+              @endif
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
           <label for="menu_name" class="col-2 col-form-label">Menu Title *</label>
           <div class="col-10">
             <input class="form-control" type="text" id="menu_name" name="menu_name" value="{{ old('menu_name') }}"
                    oninput="javascript: document.getElementById('selector').value = document.getElementById('route_name').value = this.value.toLowerCase().replace(' ', '-');"
                    placeholder="Menu Title" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="selector" class="col-2 col-form-label">Selector *</label>
+          <div class="col-10">
+            <input class="form-control" type="text" id="selector" name="selector" value="{{ old('selector') }}" placeholder="Menu ID Selector" required>
           </div>
         </div>
         <div class="form-group row">
@@ -44,12 +63,6 @@
           <label for="route_url" class="col-2 col-form-label">Route Url *</label>
           <div class="col-10">
             <input class="form-control" type="text" id="route_url" name="route_url" value="{{ old('route_url') }}" placeholder="Route Url" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="selector" class="col-2 col-form-label">Selector *</label>
-          <div class="col-10">
-            <input class="form-control" type="text" id="selector" name="selector" value="{{ old('selector') }}" placeholder="Menu ID Selector" required>
           </div>
         </div>
         <div class="form-group row">
@@ -84,7 +97,7 @@
               <div class="col-2">
               </div>
               <div class="col-10">
-                <a href="{{ route('main-menu.index') }}" class="btn btn-primary">Cancel</a>
+                <a href="{{ route('menu.index') }}" class="btn btn-primary">Cancel</a>
                 <button type="submit" class="btn btn-success">Submit</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>
               </div>
@@ -100,7 +113,7 @@
 
 @push('scripts')
   <script>
-      $('#main-menus-mm').addClass('kt-menu__item--submenu kt-menu__item--open kt-menu__item--here');
-      $('#main-menus--create-sm').addClass('kt-menu__item--active');
+      $('#sub-menus-mm').addClass('kt-menu__item--submenu kt-menu__item--open kt-menu__item--here');
+      $('#sub-menus--create-sm').addClass('kt-menu__item--active');
   </script>
 @endpush

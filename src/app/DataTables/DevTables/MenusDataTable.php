@@ -2,21 +2,22 @@
 
 namespace Anam\Dashboard\app\DataTables\DevTables;
 
-use Anam\Dashboard\Models\Menu;
+use Anam\Dashboard\Models\Menu as SubMenu;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class MenusDataTable extends DataTable {
+class MenusDataTable extends DataTable
+{
     /**
      * Build DataTable class.
      *
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query) {
+    public function dataTable($query)
+    {
         return datatables()
             ->eloquent($query)
             ->addColumn('action', 'dashboard::devMenu.action')
@@ -38,11 +39,13 @@ class MenusDataTable extends DataTable {
     /**
      * Get query source of dataTable.
      *
-     * @param \App\DevTables\Menu $model
+     * @param \App\DevTables\SubMenu $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Menu $model) {
-        return $model->whereNull('menu_id')->orderBy('serial_no');
+    public function query(SubMenu $model)
+    {
+        return $model->select(DB::raw("menus.*, coalesce(parent.menu_name, '--') AS parent_name"))
+            ->leftJoin('menus as parent', 'menus.menu_id', '=', 'parent.id');
     }
 
     /**
@@ -50,7 +53,8 @@ class MenusDataTable extends DataTable {
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html() {
+    public function html()
+    {
         $search = "Search: "; // We can also use variables; This is for instruction purpose only
         $page_length = 10; // We can make it dynamic dependent on User
         $row_text = " Rows";
@@ -58,11 +62,12 @@ class MenusDataTable extends DataTable {
         $builder = $this->builder();
 
         return $builder
-            ->setTableId('menus-table')
+            ->setTableId('submenus-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom("fltr<'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>")
-            ->orderBy(1)
+            ->orderBy(1, 'ASC')
+            ->orderBy(2, 'ASC')
             ->buttons(
                 Button::make('create'),
                 Button::make('export'),
@@ -103,7 +108,7 @@ class MenusDataTable extends DataTable {
                     });
                 }",
                 'preDrawCallback' => "function(){
-                    $('#menus-table_processing').remove();
+                    $('#submenus-table_processing').remove();
                 }",
             ));
     }
@@ -113,12 +118,14 @@ class MenusDataTable extends DataTable {
      *
      * @return array
      */
-    protected function getColumns() {
+    protected function getColumns()
+    {
         return [
             Column::make('serial_no')->footer('Serial No'),
+            Column::make('parent_name', 'parent.menu_name')->title('Menu Title')->footer('Menu Title'),
             Column::make('menu_name')->title('Menu Title')->footer('Menu Title'),
             Column::make('route_name')->title('Route URL')->footer('Route URL'),
-            Column::make('icon')->title('Icon')->footer('Icon')->searchable(false)->orderable(false)->addClass('text-center'),
+            Column::make('icon', 'icon')->title('Icon')->footer('Icon')->searchable(false)->orderable(false)->addClass('text-center'),
             Column::make('status')->footer('Status')->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
@@ -134,7 +141,8 @@ class MenusDataTable extends DataTable {
      *
      * @return string
      */
-    protected function filename() {
+    protected function filename()
+    {
         return 'Menus_' . date('YmdHis');
     }
 }

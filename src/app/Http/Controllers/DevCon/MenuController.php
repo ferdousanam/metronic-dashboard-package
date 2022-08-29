@@ -3,9 +3,9 @@
 namespace Anam\Dashboard\app\Http\Controllers\DevCon;
 
 use Anam\Dashboard\app\DataTables\DevTables\MenusDataTable;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Anam\Dashboard\Models\Menu;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
@@ -22,28 +22,30 @@ class MenuController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        return view('dashboard::devMenu.create');
+        $main_menus = Menu::all();
+        return view('dashboard::devMenu.create', compact('main_menus'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-            'serial_no' => 'required',
+            'serial_no' => 'required|int',
+            'menu_id' => 'nullable|int',
             'menu_name' => 'required',
             'selector' => 'required',
             'route_name' => 'required',
             'route_url' => 'required',
-            'status' => 'required',
+            'status' => 'required|int',
         ]);
         $data = $request->all();
         $insert = Menu::create($data);
@@ -70,12 +72,13 @@ class MenuController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $main_menu = Menu::find($id);
-        return view('dashboard::devMenu.edit', compact('main_menu'));
+        $main_menus = Menu::all();
+        $sub_menu = Menu::find($id);
+        return view('dashboard::devMenu.edit', compact('main_menus', 'sub_menu'));
     }
 
     /**
@@ -83,17 +86,18 @@ class MenuController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'serial_no' => 'required',
+            'serial_no' => 'required|int',
+            'menu_id' => 'nullable|int',
             'menu_name' => 'required',
             'selector' => 'required',
             'route_name' => 'required',
             'route_url' => 'required',
-            'status' => 'required',
+            'status' => 'required|int',
         ]);
         $data = $request->all();
 
@@ -111,7 +115,7 @@ class MenuController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {

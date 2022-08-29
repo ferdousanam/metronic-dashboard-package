@@ -5,7 +5,7 @@
   <link href="{{asset('vendor/dashboard/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet">
 @endpush
 
-@section('page_title', 'Main Menu')
+@section('page_title', 'Menu')
 @section('page_tagline', '')
 
 @section('content')
@@ -18,7 +18,7 @@
           <i class="kt-font-brand flaticon2-line-chart"></i>
         </span>
         <h3 class="kt-portlet__head-title">
-          Main Menu List
+          Menu List
         </h3>
       </div>
     </div>
@@ -36,8 +36,8 @@
   @include('dashboard::scripts.delete')
   <script type="text/javascript">
       $(document).ready(function () {
-          $('#main-menus-mm').addClass('kt-menu__item--submenu kt-menu__item--open kt-menu__item--here');
-          $('#main-menus-sm').addClass('kt-menu__item--active');
+          $('#sub-menus-mm').addClass('kt-menu__item--submenu kt-menu__item--open kt-menu__item--here');
+          $('#sub-menus-sm').addClass('kt-menu__item--active');
       });
   </script>
   <!-- Datatables -->
