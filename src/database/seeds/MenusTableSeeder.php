@@ -6,6 +6,7 @@ use Anam\Dashboard\Models\Menu;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 class MenusTableSeeder extends Seeder
 {
@@ -99,7 +100,7 @@ class MenusTableSeeder extends Seeder
                         $menu_name .= 'Add New ';
                     }
                     $parent_as = str_replace('.', ' ', str_replace($item, '', $as));
-                    $menu_name .= $parent_name = ucwords(str_replace('-', ' ', $parent_as));
+                    $menu_name .= $parent_name = Str::singular(ucwords(str_replace('-', ' ', $parent_as)));
                     if ($item == '.index') {
                         $menu_name .= ' List';
                     }
@@ -129,8 +130,13 @@ class MenusTableSeeder extends Seeder
         }
 
         foreach ($menus as $menu) {
-            $mainMenu = Menu::create($menu[0]);
-            $mainMenu->child()->saveMany(array_slice($menu, 1));
+            if (count($menu) > 2) {
+                $mainMenu = Menu::create($menu[0]);
+                $mainMenu->child()->saveMany(array_slice($menu, 1));
+            } else {
+                $menu[1]->serial_no = $menu[0]['serial_no'];
+                $menu[1]->save();
+            }
         }
     }
 }
