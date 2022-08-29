@@ -15,6 +15,16 @@
         "yajra/laravel-datatables": "^1.5"
     },
     "autoload": {
+        "files": [
+            "src/app/Helpers/DevOptions.php",
+            "src/app/Helpers/Menus.php",
+            "src/app/Helpers/ProjectInfo.php",
+            "src/app/Helpers/Route.php",
+            "src/app/Helpers/Users.php"
+        ],
+        "classmap": [
+            "src/app/Helpers/GetRoute.php"
+        ],
         "psr-4": {
             "Anam\\Dashboard\\": "src/"
         }

@@ -58,7 +58,6 @@ class DashboardServiceProvider extends ServiceProvider
             \Anam\Dashboard\app\Console\Commands\DashboardSeederCommand::class,
         ]);
 
-        $this->registerHelpers();
         $router->aliasMiddleware('CheckSuperUser', \Anam\Dashboard\app\Http\Middleware\CheckSuperUser::class);
         $router->aliasMiddleware('checkPermission', \Anam\Dashboard\app\Http\Middleware\CheckPermission::class);
     }
@@ -66,24 +65,5 @@ class DashboardServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/publish/config/dashboard.php', 'dashboard');
-    }
-
-    /**
-     * Register helpers file
-     */
-    public function registerHelpers()
-    {
-        if (file_exists($file = (__DIR__ . '/app/Http/Helpers/DevOptions.php'))) {
-            require_once($file);
-        }
-        if (file_exists($file = (__DIR__ . '/app/Http/Helpers/Menus.php'))) {
-            require_once($file);
-        }
-        if (file_exists($file = (__DIR__ . '/app/Http/Helpers/ProjectInfo.php'))) {
-            require_once($file);
-        }
-        if (file_exists($file = (__DIR__ . '/app/Http/Helpers/Users.php'))) {
-            require_once($file);
-        }
     }
 }
