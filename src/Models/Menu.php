@@ -4,13 +4,15 @@ namespace Anam\Dashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model {
+class Menu extends Model
+{
     protected $fillable = array(
         'selector',
-        'parent_id',
+        'menu_id',
         'serial_no',
         'menu_name',
         'route_name',
+        'route_url',
         'icon',
         'status',
     );
@@ -20,11 +22,23 @@ class Menu extends Model {
      *
      * @return mixed
      */
-    public function getParentNameAttribute() {
+    public function getParentNameAttribute()
+    {
         return $this->attributes['parent_name'] = $this->parent->menu_name;
     }
 
-    public function parent() {
-        return $this->belongsTo('Anam\Dashboard\Models\Menu');
+    public function parent()
+    {
+        return $this->belongsTo(Menu::class, 'menu_id', 'id');
+    }
+
+    public function child()
+    {
+        return $this->hasMany(Menu::class, 'menu_id', 'id');
+    }
+
+    public function priorities()
+    {
+        return $this->belongsToMany(Priority::class, 'priority_menu');
     }
 }

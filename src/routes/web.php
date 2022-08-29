@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::group([
     'namespace' => 'Anam\Dashboard\app\Http\Controllers\Admin',
     'middleware' => ['web'],
@@ -15,7 +17,7 @@ Route::group([
         });
 
         // User Routes with different permission
-        Route::group(['middleware' => ['checkPermission']], function () {
+        Route::group(['middleware' => ['checkPermission'], 'as' => 'admin.'], function () {
             Route::resource('dashboard', 'DashboardController');
         });
 
@@ -39,4 +41,3 @@ Route::group([
         Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     });
 });
-

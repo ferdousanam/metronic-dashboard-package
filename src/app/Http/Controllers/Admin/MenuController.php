@@ -21,23 +21,23 @@ class MenuController extends Controller
         return $menus;
     }
 
-    private static function generate_multilevel_menus($parent_id=0)
+    private static function generate_multilevel_menus($menu_id=0)
     {
-        if ($parent_id == 0) {
+        if ($menu_id == 0) {
             $attributes = ' class="nav side-menu"';
         } else {
             $attributes = ' class="nav child_menu"';
         }
         $html = "";
-        $menues = Menu::where('parent_id', $parent_id)->orderBy('serial_no')->get();
+        $menues = Menu::where('menu_id', $menu_id)->orderBy('serial_no')->get();
         if ($menues->count() >0 ) {
             $html .= "<ul$attributes>";
             foreach ($menues as $key => $menu) {
                 if ($menu->route_name && $menu->route_name == '#') {
-                    $html .= "<li><a><i class='$menu->icon'></i> $menu->menu_name"; // $menu->parent_id
+                    $html .= "<li><a><i class='$menu->icon'></i> $menu->menu_name"; // $menu->menu_id
                     $html .= "<span class='fa fa-chevron-down'></span>";
                 } else {
-                    $html .= "<li><a href='$menu->route_name'><i class='$menu->icon'></i> $menu->menu_name"; // $menu->parent_id
+                    $html .= "<li><a href='$menu->route_name'><i class='$menu->icon'></i> $menu->menu_name"; // $menu->menu_id
                 }
                 $html .= "</a>";
                 $html .= MenuController::generate_multilevel_menus($menu->id);

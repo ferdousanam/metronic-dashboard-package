@@ -31,7 +31,7 @@ class CheckPermission
             $has_permission = false;
         }
         if (!$has_permission) {
-            return redirect(route('dashboard.index'));
+            return redirect(route('admin.dashboard.index'));
         }
         return $next($request);
     }

@@ -42,7 +42,7 @@ class MenusDataTable extends DataTable {
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Menu $model) {
-        return $model->where('parent_id', 0)->orderBy('serial_no');
+        return $model->whereNull('menu_id')->orderBy('serial_no');
     }
 
     /**

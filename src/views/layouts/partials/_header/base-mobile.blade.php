@@ -2,7 +2,7 @@
 <!-- begin:: Header Mobile -->
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 	<div class="kt-header-mobile__logo">
-		<a href="{{ route('dashboard.index') }}">
+		<a href="{{ route('admin.dashboard.index') }}">
 			<img alt="Logo" src="{{brandLogo()}}" />
 		</a>
 	</div>

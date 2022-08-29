@@ -11,4 +11,9 @@ class Priority extends Model
         'priority_description',
         'priority_status',
     );
+
+    public function menus()
+    {
+        return $this->belongsToMany(Menu::class, 'priority_menu');
+    }
 }

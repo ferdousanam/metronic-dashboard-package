@@ -44,7 +44,7 @@ class SubMenusDataTable extends DataTable {
      */
     public function query(SubMenu $model) {
         return $model->select(DB::raw('menus.*, parent.menu_name AS parent_name'))
-            ->where('menus.parent_id', '<>', 0)->join('menus as parent', 'menus.parent_id', 'parent.id');
+            ->whereNotNull('menus.menu_id')->join('menus as parent', 'menus.menu_id', '=', 'parent.id');
     }
 
     /**

@@ -35,9 +35,15 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="route_name" class="col-2 col-form-label">Route Url *</label>
+          <label for="route_name" class="col-2 col-form-label">Route Name *</label>
           <div class="col-10">
-            <input class="form-control" type="text" id="route_name" name="route_name" value="{{ old('route_name') }}" placeholder="Route Url" required>
+            <input class="form-control" type="text" id="route_name" name="route_name" value="{{ old('route_name') }}" placeholder="Route Name" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="route_url" class="col-2 col-form-label">Route Url *</label>
+          <div class="col-10">
+            <input class="form-control" type="text" id="route_url" name="route_url" value="{{ old('route_url') }}" placeholder="Route Url" required>
           </div>
         </div>
         <div class="form-group row">

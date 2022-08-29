@@ -42,10 +42,10 @@ class MenuController extends Controller
             'menu_name' => 'required',
             'selector' => 'required',
             'route_name' => 'required',
+            'route_url' => 'required',
             'status' => 'required',
         ]);
         $data = $request->all();
-        $data['parent_id'] = 0;
         $insert = Menu::create($data);
         if ($insert) {
             session()->flash('success', 'Menu Created Successfully');
@@ -92,10 +92,10 @@ class MenuController extends Controller
             'menu_name' => 'required',
             'selector' => 'required',
             'route_name' => 'required',
+            'route_url' => 'required',
             'status' => 'required',
         ]);
         $data = $request->all();
-        $data['parent_id'] = 0;
 
         $menu = Menu::find($id);
         $update = $menu->update($data);

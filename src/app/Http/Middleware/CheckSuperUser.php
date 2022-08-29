@@ -16,7 +16,7 @@ class CheckSuperUser
   public function handle($request, Closure $next)
   {
     if (!super_user()) {
-      return redirect(route('dashboard.index'));
+      return redirect(route('admin.dashboard.index'));
     }
     return $next($request);
   }

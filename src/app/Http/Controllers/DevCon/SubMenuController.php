@@ -22,7 +22,7 @@ class SubMenuController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -40,10 +40,11 @@ class SubMenuController extends Controller
     {
         $this->validate($request, [
             'serial_no' => 'required',
-            'parent_id' => 'required',
+            'menu_id' => 'required',
             'menu_name' => 'required',
             'selector' => 'required',
             'route_name' => 'required',
+            'route_url' => 'required',
             'status' => 'required',
         ]);
         $data = $request->all();
@@ -91,10 +92,11 @@ class SubMenuController extends Controller
     {
         $this->validate($request, [
             'serial_no' => 'required',
-            'parent_id' => 'required',
+            'menu_id' => 'required',
             'menu_name' => 'required',
             'selector' => 'required',
             'route_name' => 'required',
+            'route_url' => 'required',
             'status' => 'required',
         ]);
         $data = $request->all();

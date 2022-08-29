@@ -31,7 +31,7 @@ class DevOptionController extends Controller
     $dev_mode_setup = DB::table('dev_mode_setup')->where('id', 1);
     $update = $dev_mode_setup->update($data);
     if ($update) { }
-    return redirect(route('dashboard.index'));
+    return redirect(route('admin.dashboard.index'));
   }
 
   /**

@@ -27,9 +27,9 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="parent_id" class="col-2 col-form-label">Parent Menu *</label>
+          <label for="menu_id" class="col-2 col-form-label">Parent Menu *</label>
           <div class="col-10">
-            <select name="parent_id" id="parent_id" class="form-control chosen" required>
+            <select name="menu_id" id="menu_id" class="form-control chosen" required>
               <option>Select Parent Menu</option>
               @if(isset($main_menus) && count($main_menus)>0)
                 @foreach ($main_menus as $main_menu)
@@ -54,9 +54,15 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="route_name" class="col-2 col-form-label">Route Url *</label>
+          <label for="route_name" class="col-2 col-form-label">Route Name *</label>
           <div class="col-10">
-            <input class="form-control" type="text" id="route_name" name="route_name" value="{{ old('route_name') }}" placeholder="Route Url" required>
+            <input class="form-control" type="text" id="route_name" name="route_name" value="{{ old('route_name') }}" placeholder="Route Name" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="route_url" class="col-2 col-form-label">Route Url *</label>
+          <div class="col-10">
+            <input class="form-control" type="text" id="route_url" name="route_url" value="{{ old('route_url') }}" placeholder="Route Url" required>
           </div>
         </div>
         <div class="form-group row">
